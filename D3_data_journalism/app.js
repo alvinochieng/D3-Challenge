@@ -39,12 +39,12 @@ d3.csv("data.csv").then(function(newsdata) {
     // ==============================
     var xLinearScale = d3.scaleLinear()
     .domain([d3.min(newsdata, d => d.poverty) * 0.8,
-            d3.max(newsdata, d => d.poverty) * 1.2])
+            d3.max(newsdata, d => d.poverty) * 1.1])
       .range([0, width]);
 
     var yLinearScale = d3.scaleLinear()
-    .domain([d3.min(newsdata, d => d.healthcare) * 0.8,
-        d3.max(newsdata, d => d.healthcare) * 1.2])
+    .domain([d3.min(newsdata, d => d.healthcare) * 0.9,
+        d3.max(newsdata, d => d.healthcare) * 1.1])
       .range([height, 0]);
 
     // Step 3: Create axis functions
@@ -70,7 +70,7 @@ d3.csv("data.csv").then(function(newsdata) {
     .attr("cx", d => xLinearScale(d.poverty))
     .attr("cy", d => yLinearScale(d.healthcare))
     .attr("class", "stateCircle")
-    .attr("r", "15");
+    .attr("r", "10");
 
     var circleLabels = chartGroup.selectAll(null)
     .data(newsdata)
@@ -87,7 +87,7 @@ d3.csv("data.csv").then(function(newsdata) {
         return d.abbr;
     })
     .attr("font-family", "sans-serif")
-    .attr("font-size", "10px")
+    .attr("font-size", "9px")
     .attr("text-anchor", "middle")
     .attr("fill", "white");
 
